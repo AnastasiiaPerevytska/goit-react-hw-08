@@ -59,7 +59,7 @@
 .input:not(:placeholder-shown)+.label {
     top: 0;
     left: 8px;
-    color: #000dff96;
+    
     font-size: 14px;
 }
 

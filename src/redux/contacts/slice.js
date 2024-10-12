@@ -7,7 +7,7 @@ import {
 } from "./operations";
 
 const initialState = {
-  contacts: [],
+  items: [],
   isLoading: false,
   error: null,
 };
