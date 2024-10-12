@@ -1,0 +1,12 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 100%;
+    background: rgb(188, 227, 228) 100%;
+    background: linear-gradient(0deg,
+                rgb(228, 246, 247) 0%,
+                rgb(237, 240, 234) 100%);
+    padding: 12px 32px;
+    height: 60px;
+}
