@@ -5,6 +5,7 @@ import {
   deleteContact,
   updateContact,
 } from "./operations";
+import { logout } from "../auth/operations";
 
 const initialState = {
   items: [],
@@ -17,7 +18,7 @@ const contactsSlice = createSlice({
   initialState,
   reducers: {
     clearContacts: (state) => {
-      state.contacts = [];
+      state.items = [];
     },
   },
   extraReducers: (builder) => {
@@ -28,25 +29,28 @@ const contactsSlice = createSlice({
       })
       .addCase(fetchContacts.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.contacts = action.payload;
+        state.items = action.payload;
       })
       .addCase(fetchContacts.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
       .addCase(addContact.fulfilled, (state, action) => {
-        state.contacts.push(action.payload);
+        state.items.push(action.payload);
       })
       .addCase(deleteContact.fulfilled, (state, action) => {
-        state.contacts = state.contacts.filter(
+        state.items = state.items.filter(
           (contact) => contact.id !== action.payload
         );
       })
       .addCase(updateContact.fulfilled, (state, action) => {
-        const index = state.contacts.findIndex(
+        const index = state.items.findIndex(
           (contact) => contact.id === action.payload.id
         );
-        state.contacts[index] = action.payload;
+        state.items[index] = action.payload;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.items = []; 
       });
   },
 });
